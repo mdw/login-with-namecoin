@@ -20,9 +20,11 @@ Suppose our user opens www.facebook.com, and sees that **Login with Namecoin** i
 
 1. Client looks up the name key `d/facebook` in the Namecoin blockchain. This key includes new values:
 
-```json
-{"register_url": "https://www.facebook.com/register.php"
- "register_timeout": 86400}
+```edn
+{
+  :register-url "https://www.facebook.com/register.php"
+  :register_timeout 86400
+}
 ```
 
 2. Client generates a random passphrase.
