@@ -20,10 +20,10 @@ Suppose our user opens www.facebook.com, and sees that **Login with Namecoin** i
 
 1. Client looks up the name key `d/facebook` in the Namecoin blockchain. This key includes new values:
 
-```edn
+```clojure
 {
   :register-url "https://www.facebook.com/register.php"
-  :register_timeout 86400
+  :register-timeout 86400
 }
 ```
 
