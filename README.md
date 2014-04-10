@@ -21,10 +21,8 @@ Suppose our user opens www.facebook.com, and sees that **Login with Namecoin** i
 1. Client looks up the name key `d/facebook` in the Namecoin blockchain. This key includes new values:
 
 ```clojure
-{
-  :register-url "https://www.facebook.com/register.php"
-  :register-timeout 86400
-}
+{:register-url "https://www.facebook.com/register.php"
+ :register-timeout 86400}
 ```
 
 2. Client generates a random passphrase.
@@ -33,15 +31,13 @@ Client's random passphrase is `correct horse battery staple`.
 
 3. Client POSTs a temporary registration message to `register_url`:
 
-```json
-{
-  "registration": {
-    "nonce": "119ce833204d494499688dc6e30e1a74",
-    "identity": "id/johnsmith",
-    "password_hash: "p5k2$3e9$XXXX$DIwqKlLGRDL.B2KjvDYdKjmH2/U/iee4"
-  }
-  "signature": "GzMaHVvY7MCM6IGezMkdk+s4Fc/qAXkn80ettBdJbkyjmbNYB20uSwuwSJL5BuvhhE/oFgcd2KjtEI9vCzQtUZs="
-}```
+```clojure
+{:registration {
+    :nonce #uuid 119ce833204d494499688dc6e30e1a74
+    :identity "id/johnsmith",
+    :password_hash "p5k2$3e9$XXXX$DIwqKlLGRDL.B2KjvDYdKjmH2/U/iee4"}
+  :signature "GzMaHVvY7MCM6IGezMkdk+s4Fc/qAXkn80ettBdJbkyjmbNYB20uSwuwSJL5BuvhhE/oFgcd2KjtEI9vCzQtUZs="}
+```
 
 4. The server verifies the temporary registration:
   - Check that the nonce has not been seen yet
